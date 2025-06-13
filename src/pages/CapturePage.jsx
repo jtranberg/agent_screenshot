@@ -10,7 +10,8 @@ const CapturePage = () => {
   const handleCapture = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:3001/scrape', {
+      const res = await fetch("https://agent-screenshot-server.onrender.com/scrape", {
+
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url, maxPages: 5 }),
