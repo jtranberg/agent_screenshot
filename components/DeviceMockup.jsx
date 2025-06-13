@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../src/index.css';
-import Nav from '../../components/nav';
+import Nav from '../components/nav';
 
 const DeviceMockup = ({ image, label }) => {
   const imgRef = useRef(null);
