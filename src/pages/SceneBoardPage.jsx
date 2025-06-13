@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav';
+import Nav from '../../components/nav';
+
 import SceneBoard from '/components/SceneBoard';
 import '../../src/index.css';
 

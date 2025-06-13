@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav';
+import Nav from '../../components/nav';
+
 import DeviceMockup from '/components/DeviceMockup';
 import '../../src/index.css';
 

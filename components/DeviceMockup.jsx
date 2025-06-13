@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../src/index.css';
+import Nav from '../../components/nav';
 
 const DeviceMockup = ({ image, label }) => {
   const imgRef = useRef(null);
@@ -26,6 +27,7 @@ const DeviceMockup = ({ image, label }) => {
   }
 
   return () => {
+    <Nav />
     imgElement?.removeEventListener('load', handleLoad);
   };
 }, [image]);
