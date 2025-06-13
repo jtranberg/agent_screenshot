@@ -1,6 +1,6 @@
 // src/pages/DevicePage.jsx
 import DeviceMockup from '/components/DeviceMockup';
-import Nav from '/components/Nav';
+import Nav from '../../components/nav';
 import '../../src/index.css';
 
 const DevicePage = () => {
