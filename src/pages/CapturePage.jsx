@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Nav from '../../components/Nav';
+import Nav from '../components/Nav';
 
 const CapturePage = () => {
   const [url, setUrl] = useState('');

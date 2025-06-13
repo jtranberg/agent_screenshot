@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 import DeviceMockup from '../../components/DeviceMockup';
 import { Link } from 'react-router-dom';
-import Nav from '/components/Nav';
+import Nav from '../components/Nav';
 
 const ExportPage = () => {
   const containerRef = useRef(null);
