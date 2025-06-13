@@ -19,7 +19,7 @@ const Nav = () => {
   return (
     <nav style={styles.nav}>
       <div style={styles.header}>
-        <span style={styles.logo}>🕵️‍♂️ ScreenDroppr</span>
+        <span style={styles.logo}>🕵️‍♂️ Agent Screenshot</span>
         {isMobile && (
           <button style={styles.toggle} onClick={() => setOpen((prev) => !prev)}>
             ☰
