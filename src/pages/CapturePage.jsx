@@ -30,7 +30,7 @@ const CapturePage = () => {
   return (
     <div style={styles.page}>
       <Nav />
-      <h1 style={styles.title}>🕵️‍♂️ ScreenDroppr: Capture Intel</h1>
+      <h1 style={styles.title}>🕵️‍♂️ Agent-Screenshot: Capturing Intel</h1>
 
       <input
         value={url}
@@ -39,13 +39,13 @@ const CapturePage = () => {
         style={styles.input}
       />
       <button onClick={handleCapture} style={styles.button}>
-        {loading ? 'Scanning...' : '🧠 Capture Clues'}
+        {loading ? 'Scanning...' : '🧠 Capture Screens'}
       </button>
 
-      <div style={styles.links}>
+      {/* <div style={styles.links}>
         <Link to="/scene" style={styles.link}>🧩 Scene Board</Link>
         <Link to="/export" style={styles.link}>💾 Export Evidence</Link>
-      </div>
+      </div> */}
     </div>
   );
 };
