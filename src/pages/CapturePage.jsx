@@ -10,7 +10,7 @@ const CapturePage = () => {
   const handleCapture = async () => {
     setLoading(true);
     try {
-      const res = await fetch("https://agent-screenshot-server.onrender.com/scrape", {
+      const res = await fetch("https://agent-screenshot-backend.onrender.com/scrape", {
 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
