@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Rnd } from 'react-rnd';
 import '../src/index.css';
 
-const SceneBoard = ({ images = [], layout = 'template' }) => {
+const SceneBoard = ({ layout = 'template' }) => {
   const [editStates, setEditStates] = useState([]);
   const [selectionBox, setSelectionBox] = useState(null);
   const [selectStart, setSelectStart] = useState(null);
@@ -11,11 +11,15 @@ const SceneBoard = ({ images = [], layout = 'template' }) => {
   const boardRef = useRef();
   const tileRefs = useRef({});
 
+  // ✅ Load captured image URLs from sessionStorage
   useEffect(() => {
-    if (images.length > 0) {
+    const stored = sessionStorage.getItem('capturedImages');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      const imageUrls = parsed.map((item) => item.file);
       setEditStates(
-        images.map((img, i) => ({
-          url: img,
+        imageUrls.map((url, i) => ({
+          url,
           opacity: 1,
           zIndex: i + 1,
           showToolbar: false,
@@ -26,7 +30,7 @@ const SceneBoard = ({ images = [], layout = 'template' }) => {
         }))
       );
     }
-  }, [images]);
+  }, []);
 
   const updateState = (index, newProps) => {
     setEditStates((prev) => {
@@ -155,14 +159,14 @@ const SceneBoard = ({ images = [], layout = 'template' }) => {
               opacity: state.opacity,
               zIndex: state.zIndex,
               cursor: selectModeIndex === i ? 'crosshair' : 'default',
-              position: 'absolute'
+              position: 'absolute',
             }}
             className="rnd-tile"
             onClick={() => updateState(i, { showToolbar: !state.showToolbar })}
           >
             {state.showToolbar && (
               <div className="toolbar" style={styles.toolbarStickyInside}>
-                <label style={styles.label} title="Adjust image opacity">
+                <label style={styles.label}>
                   <span style={{ minWidth: '48px' }}>Opacity:</span>
                   <input
                     type="range"
@@ -174,19 +178,11 @@ const SceneBoard = ({ images = [], layout = 'template' }) => {
                     style={{ width: '60px' }}
                   />
                 </label>
-                <button title="Bring to front" style={styles.button} onClick={() => bringToFront(i)}>⬆</button>
-                <button title="Send to back" style={styles.button} onClick={() => sendToBack(i)}>⬇</button>
-                <button
-                  title="Start area selection"
-                  style={styles.copyInlineButton}
-                  onClick={() => setSelectModeIndex(i)}
-                >📐</button>
-                <button
-                  title="Copy selected area to new tile"
-                  style={styles.copyInlineButton}
-                  onClick={() => cropToNewTile(i)}
-                >📋</button>
-                <button title="Delete image" style={styles.deleteButton} onClick={() => handleDelete(i)}>🗑</button>
+                <button style={styles.button} onClick={() => bringToFront(i)}>⬆</button>
+                <button style={styles.button} onClick={() => sendToBack(i)}>⬇</button>
+                <button style={styles.copyInlineButton} onClick={() => setSelectModeIndex(i)}>📐</button>
+                <button style={styles.copyInlineButton} onClick={() => cropToNewTile(i)}>📋</button>
+                <button style={styles.deleteButton} onClick={() => handleDelete(i)}>🗑</button>
               </div>
             )}
             <div
